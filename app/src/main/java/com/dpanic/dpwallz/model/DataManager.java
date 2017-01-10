@@ -20,11 +20,20 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class DataManager {
-//    private static DataManager mDataManager;
+    private static DataManager mDataManager;
     private final BriteDatabase database;
     private final CompositeSubscription compositeSubscription = new CompositeSubscription();
 
-    public DataManager(Context context) {
+    public static DataManager getInstance(Context context) {
+        if (mDataManager == null) {
+            mDataManager = new DataManager(context);
+        }
+
+        return mDataManager;
+    }
+
+
+    private DataManager(Context context) {
         SqlBrite sqlBrite = SqlBrite.create(new SqlBrite.Logger() {
             @Override
             public void log(String s) {
@@ -247,6 +256,7 @@ public class DataManager {
     }
 
     public void forceToAddImage(final Image image) {
+        Log.e("thanh.dao", "forceToAddImage: ");
 //        final Subscription[] sub = new Subscription[1];
 //        String quey = "INSERT OR REPLACE INTO " +Image.TABLE_NAME + " ("+Image.FIELD_PEXELS_ID, name, role) \n" +
 //                "  VALUES (  1, \n" +

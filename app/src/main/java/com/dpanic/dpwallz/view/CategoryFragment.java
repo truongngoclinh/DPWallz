@@ -84,8 +84,8 @@ public class CategoryFragment extends BaseFragment implements SwipeRefreshLayout
     }
 
     private void initFragment() {
-//        mDataManager = DataManager.getInstance(getActivity());
-        mDataManager = new DataManager(getActivity());
+        mDataManager = DataManager.getInstance(getActivity().getApplicationContext());
+//        mDataManager = new DataManager(getActivity());
         categoryList = new ArrayList<>();
 
         categoryAdapter = new CategoryAdapter(getActivity(), categoryList);

@@ -158,8 +158,8 @@ public class DetailActivity extends BaseActivity {
         Bundle bundle = intent.getExtras();
         image = bundle.getParcelable(Constants.IMAGE_INSTANCE);
 
-        //        mDataManager = DataManager.getInstance(mContext);
-        mDataManager = new DataManager(mContext);
+        mDataManager = DataManager.getInstance(mContext.getApplicationContext());
+//        mDataManager = new DataManager(mContext);
 
         loadBackdropImage(image);
         backDropImage.setOnClickListener(new View.OnClickListener() {
@@ -206,6 +206,7 @@ public class DetailActivity extends BaseActivity {
     @Subscribe
     public void onMessage(DownloadEvent event) {
         if (event.getStatus() == DownloadEvent.STATUS_COMPLETE) {
+            Log.e("thanh.dao", "DownloadEvent.STATUS_COMPLETE: ");
             image.setLocalLink(FileUtil.getLocalPath(image.getOriginalLink()));
             mDataManager.forceToAddImage(image);
         } else if (event.getStatus() == DownloadEvent.STATUS_ERROR) {
@@ -488,10 +489,9 @@ public class DetailActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+
         Glide.clear(backDropImage);
-//        if (compositeSubscription != null) {
-//            compositeSubscription.unsubscribe();
-//        }
+
         if (layoutAd != null) {
             layoutAd.removeAllViews();
         }
@@ -520,10 +520,10 @@ public class DetailActivity extends BaseActivity {
         if (mContext != null) {
             mContext = null;
         }
-        if (mDataManager != null) {
-            mDataManager.destruct();
-            mDataManager = null;
-        }
+//        if (mDataManager != null) {
+//            mDataManager.destruct();
+//            mDataManager = null;
+//        }
 
         super.onDestroy();
     }

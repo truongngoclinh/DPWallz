@@ -21,9 +21,9 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-//        if (compositeSubscription != null) {
-//            compositeSubscription.unsubscribe();
-//        }
+        if (compositeSubscription != null) {
+            compositeSubscription.unsubscribe();
+        }
         super.onDestroy();
     }
 }

@@ -68,7 +68,7 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:${firebaseVersion}"
     compile "io.reactivex:rxjava:${rxJavaVersion}"
     compile "io.reactivex:rxandroid:${rxAndroidVersion}"
-    compile 'com.squareup.sqlbrite:sqlbrite:0.7.0'
+    compile 'com.squareup.sqlbrite:sqlbrite:1.1.1'
     compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
     compile "com.android.support:appcompat-v7:${androidSupportVersion}"
     compile "com.android.support:design:${androidSupportVersion}"

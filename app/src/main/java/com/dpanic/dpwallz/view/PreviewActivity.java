@@ -146,8 +146,8 @@ public class PreviewActivity extends BaseActivity {
     }
 
     private void init() {
-//        mDataManager = DataManager.getInstance(this);
-        mDataManager = new DataManager(this);
+        mDataManager = DataManager.getInstance(getApplicationContext());
+//        mDataManager = new DataManager(this);
 
         Intent intent = getIntent();
         image = intent.getParcelableExtra(Constants.IMAGE_INSTANCE);
@@ -287,10 +287,10 @@ public class PreviewActivity extends BaseActivity {
 
         Glide.clear(preImage);
 
-        if (mDataManager != null) {
-            mDataManager.destruct();
-            mDataManager = null;
-        }
+//        if (mDataManager != null) {
+//            mDataManager.destruct();
+//            mDataManager = null;
+//        }
 
         super.onDestroy();
     }

@@ -117,6 +117,7 @@ public class ImageActionHelper {
     }
 
     private void downloadCompleted(boolean isForView) {
+        Log.e("thanh.dao", "downloadCompleted: send event");
         DownloadEvent downloadEvent = new DownloadEvent(DownloadEvent.STATUS_COMPLETE);
         downloadEvent.setForView(isForView);
         EventBus.getDefault().post(downloadEvent);
@@ -143,12 +144,13 @@ public class ImageActionHelper {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        Log.e("thanh.dao", "handler post delay: ");
 
                         hideProgressDialog();
 
                         performActionAfterDownload(action);
 
-//                        downloadCompleted(currentAction == Constants.DOWNLOAD_FOR_PREVIEW);
+                        downloadCompleted(currentAction == Constants.DOWNLOAD_FOR_PREVIEW);
 
                         currentAction = -1;
                         downloadId = -1;
@@ -159,7 +161,13 @@ public class ImageActionHelper {
 
             @Override
             public void onError(Throwable throwable) {
+                Log.e("thanh.dao", "download onError: ");
                 hideProgressDialog();
+
+                String filePath = FileUtil.getLocalPath(img.getLargeLink());
+                if (FileUtil.isFileExists(filePath)) {
+                    FileUtil.deleteFile(filePath);
+                }
 
                 DownloadEvent event = new DownloadEvent(DownloadEvent.STATUS_ERROR);
                 event.setException(throwable);
@@ -186,7 +194,7 @@ public class ImageActionHelper {
             performShare();
             break;
         case Constants.DOWNLOAD_FOR_PREVIEW:
-            downloadCompleted(true);
+//            downloadCompleted(true);
             break;
         }
     }

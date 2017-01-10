@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by dpanic on 10/14/2016.
@@ -93,13 +92,11 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        compositeSubscription = new CompositeSubscription();
-
         Bundle bundle = getArguments();
         isFavorite = bundle.getBoolean(Constants.IS_FAVORITE_FRAGMENT);
 
-        //        mDataManager = DataManager.getInstance(getActivity());
-        mDataManager = new DataManager(getActivity());
+        mDataManager = DataManager.getInstance(getActivity().getApplicationContext());
+//        mDataManager = new DataManager(getActivity());
 
         if (noDownloadView == null) {
             noDownloadView = noDownloadViewStub.inflate();
@@ -247,10 +244,10 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
 
     @Override
     public void onDestroy() {
-        if (mDataManager != null) {
-            mDataManager.destruct();
-            mDataManager = null;
-        }
+//        if (mDataManager != null) {
+//            mDataManager.destruct();
+//            mDataManager = null;
+//        }
 
         super.onDestroy();
     }
