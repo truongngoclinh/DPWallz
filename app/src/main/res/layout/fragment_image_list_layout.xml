@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout android:id="@+id/image_list_container"
+                                              xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:app="http://schemas.android.com/apk/res-auto"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:background="@color/color_fragment_background"
+                                              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/image_list_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/image_list_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/image_list_error_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/string_no_internet_connection"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_no_internet_white"/>
+
+
+            <TextView
+                android:id="@+id/error_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:text="@string/string_no_internet_connection"
+                android:textColor="@color/color_white"
+                android:textSize="16sp"/>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/image_list_no_internet_button_wrapper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:mrl_rippleColor="@color/color_white"
+                app:mrl_rippleOverlay="true"
+                app:mrl_rippleRoundedCorners="18dp">
+
+                <LinearLayout
+                    android:id="@+id/image_list_btn_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background_white_stroke"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:duplicateParentState="true"
+                        android:text="@string/string_retry"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </LinearLayout>
+        <ViewStub
+            android:id="@+id/no_download_view_stub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout="@layout/no_download_layout"/>
+
+        <ViewStub
+            android:id="@+id/no_fav_view_stub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout="@layout/no_fav_layout"/>
+
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

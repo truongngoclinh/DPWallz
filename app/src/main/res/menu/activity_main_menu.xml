@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/main_menu_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/string_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView"/>
+    <item
+        android:id="@+id/main_menu_share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/string_share_this_app"
+        app:showAsAction="ifRoom"/>
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple"
+        android:layout_width="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        app:mrl_rippleColor="@color/color_primary_26"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleRoundedCorners="15dp">
+
+    <ImageView
+        android:id="@+id/color_item"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:src="@drawable/color_item_background"/>
+    </com.balysv.materialripple.MaterialRippleLayout>
+</FrameLayout>

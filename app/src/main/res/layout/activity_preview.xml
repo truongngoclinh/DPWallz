@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/activity_preview"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.dpanic.dpwallz.view.PreviewActivity"
+             android:fitsSystemWindows="true"
+             android:background="@color/color_fragment_background"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <HorizontalScrollView
+        android:id="@+id/preview_scroll_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <ImageView
+            android:id="@+id/preview_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:visibility="invisible"
+            android:contentDescription="@null"/>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@+id/preview_error_container"
+        android:background="@color/color_fragment_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/preview_no_internet_button_wrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:mrl_rippleColor="@color/color_white"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleRoundedCorners="18dp">
+
+            <LinearLayout
+                android:id="@+id/preview_btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background_white_stroke"
+                android:clickable="true"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:duplicateParentState="true"
+                    android:text="@string/string_retry"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        <TextView
+            android:id="@+id/preview_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/preview_no_internet_button_wrapper"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:text="@string/string_no_internet_connection"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:layout_above="@id/preview_error_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:scaleType="fitXY"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_no_internet_white"
+            android:contentDescription="@string/string_no_internet_connection"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/preview_loading_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/preview_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_prev_toolbar_background"
+        app:theme="@style/PreviewActionBar"/>
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+
+</FrameLayout>

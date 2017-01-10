@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#484759</color>
+    <color name="colorPrimaryDark">#484759</color>
+    <color name="colorAccent">#4da3e0</color>
+    <color name="color_progress_circle">#a0cdee</color>
+
+    <color name="color_white">#FFFFFF</color>
+
+    <color name="color_fav_on_background">#F35D64</color>
+    <color name="color_sub_text">#8C8C9B</color>
+
+    <color name="color_primary_26">#42484759</color>
+    <color name="color_primary_60">#96484759</color>
+    <color name="color_prev_toolbar_background">#48000000</color>
+    <color name="color_fragment_background">#585875</color>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:padding="5dp">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleRoundedCorners="18dp"
+        app:mrl_rippleColor="@color/color_primary_26">
+
+        <LinearLayout
+            android:id="@+id/tag_item_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fav_off_button_background"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/tag_item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:duplicateParentState="true"
+                android:text="@string/action_settings"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+</FrameLayout>

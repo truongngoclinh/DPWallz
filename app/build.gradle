@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'realm-android'
+//apply plugin: 'android-apt'
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'android'
+            keyPassword 'th@nh280490'
+            storeFile file('dpwallz_keystore.jks')
+            storePassword 'th@nh280490'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.dpanic.dpwallz"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 8
+        versionName "1.0.7"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+ext {
+    androidSupportVersion = "25.1.0"
+    firebaseVersion = "10.0.1" // upgrade to 10.0.1 to avoid security exception too many alarms
+    rxJavaVersion = "1.2.1"
+    rxAndroidVersion = "1.2.1"
+    butterKnifeVersion = "8.4.0"
+    glideVersion = "3.7.0"
+    jsoupVersion = "1.9.2"
+    eventBusVersion = "3.0.0"
+    materialRippleVersion = "1.0.2"
+    okhttpVersion = "3.4.1"
+    freshdownloadviewVersion = "1.0"
+    stethoVersion = "1.4.1"
+    flowlayoutmanagerVersion = "1.2.3.2"
+    daggerVersion = "2.8"
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    releaseCompile "com.google.firebase:firebase-core:${firebaseVersion}"
+    releaseCompile "com.google.firebase:firebase-crash:${firebaseVersion}"
+    compile "com.google.firebase:firebase-messaging:${firebaseVersion}"
+    compile "io.reactivex:rxjava:${rxJavaVersion}"
+    compile "io.reactivex:rxandroid:${rxAndroidVersion}"
+    compile 'com.squareup.sqlbrite:sqlbrite:0.7.0'
+    compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+    compile "com.android.support:appcompat-v7:${androidSupportVersion}"
+    compile "com.android.support:design:${androidSupportVersion}"
+    compile "com.github.bumptech.glide:glide:${glideVersion}"
+    compile "org.jsoup:jsoup:${jsoupVersion}"
+    compile "com.jakewharton:butterknife:${butterKnifeVersion}"
+    compile "org.greenrobot:eventbus:${eventBusVersion}"
+    compile "com.xiaofeng.android:flowlayoutmanager:${flowlayoutmanagerVersion}"
+    compile "com.balysv:material-ripple:${materialRippleVersion}"
+    compile "com.google.firebase:firebase-ads:${firebaseVersion}"
+    debugCompile "com.facebook.stetho:stetho:${stethoVersion}"
+//    debugCompile(name: 'stetho_realm-2.0.0', ext: 'aar')
+    testCompile 'junit:junit:4.12'
+    compile "com.pitt.fresh.library:freshdownloadview:${freshdownloadviewVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">DPWallz</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="string_explore">Explore</string>
+    <string name="string_favorites">Favorites</string>
+    <string name="string_history">History</string>
+    <string name="string_settings">Settings</string>
+    <string name="string_user_settings">User Settings</string>
+    <string name="string_category">Category</string>
+    <string name="string_recent">Recent</string>
+    <string name="string_month_popular">Month Popular</string>
+    <string name="string_all_time_popular">All-Time Popular</string>
+    <string name="string_favorite">Favorite</string>
+    <string name="string_download">Download</string>
+    <string name="string_set_as">Set as</string>
+    <string name="string_prefix_by">by %s</string>
+    <string name="string_downloading">Downloading</string>
+    <string name="string_the_image_has_already_downloaded">The image has already downloaded</string>
+    <string name="string_download_completed">Download completed</string>
+    <string name="string_no_internet_connection">No internet connection</string>
+    <string name="string_share">Share</string>
+    <string name="string_search">Search</string>
+    <string name="string_color_search_prefix_text">color: </string>
+    <string name="string_retry">Retry</string>
+
+    <!-- -
+        This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="string_image_list_native_ad_id">ca-app-pub-9744416729639710/2174309584</string>
+    <string name="string_detail_native_ad_id">ca-app-pub-9744416729639710/9438394385</string>
+    <string name="string_color">Color</string>
+    <string name="permission_explaination">Storage permission is required in order to download photos to external storage. \nDo you want to grant storage permission?</string>
+    <string name="string_notification_daily_content">Enjoy new daily photos with DPWallz</string>
+    <string name="string_no_result_found">No Result Found</string>
+    <string name="string_no_favorite_yet">No favorite yet</string>
+    <string name="string_find_your_photos">Find your photo and click</string>
+    <string name="string_no_download_yet">No download yet</string>
+    <string name="string_share_this_app">Share this app</string>
+    <string name="share_app">Share app</string>
+</resources>
