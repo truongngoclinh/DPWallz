@@ -5,6 +5,7 @@ import android.app.Application;
 import com.dpanic.dpwallz.di.AppModule;
 import com.dpanic.dpwallz.di.DPWallzComponent;
 import com.dpanic.dpwallz.di.DaggerDPWallzComponent;
+import com.squareup.leakcanary.LeakCanary;
 //import com.squareup.leakcanary.LeakCanary;
 
 //import com.facebook.stetho.Stetho;
@@ -29,12 +30,12 @@ public class DPWallz extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        if (LeakCanary.isInAnalyzerProcess(this)) {
-//            // This process is dedicated to LeakCanary for heap analysis.
-//            // You should not init your app in this process.
-//            return;
-//        }
-//        LeakCanary.install(this);
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
 
 //        Realm.init(this);
 //        RealmConfiguration realmConfig = new RealmConfiguration.Builder().build();

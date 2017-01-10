@@ -2,7 +2,6 @@ package com.dpanic.dpwallz.view;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,8 +79,6 @@ public class MainActivity extends BaseActivity
             }
         }
 
-        //        updateAndroidSecurityProvider(this);
-
         initFirebaseInstance();
 
         setupActionBar();
@@ -96,8 +93,6 @@ public class MainActivity extends BaseActivity
 
         subscribeToDPWallzTopic();
 
-//        moveDBFromSqlToRealm();
-
 //        logMemorySize();
     }
 
@@ -109,30 +104,6 @@ public class MainActivity extends BaseActivity
 //        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
 //        int memoryClass = am.getMemoryClass();
 //        Log.v("thanh.dao", "memoryClass:" + Integer.toString(memoryClass));
-//    }
-
-    //    private void moveDBFromSqlToRealm() {
-//        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        boolean movedImageDB = preferences.getBoolean(Constants.MOVED_IMAGE_DB, false);
-//
-//        if (!movedImageDB) {
-//            DataManager manager = DataManager.getInstance(this);
-//            manager.getAllImages().subscribe(new Action1<List<Image>>() {
-//                @Override
-//                public void call(List<Image> images) {
-//                    if (images.size() > 0) {
-//                        Realm realm = Realm.getDefaultInstance();
-//                        realm.beginTransaction();
-//                        realm.copyToRealm(images);
-//                        realm.commitTransaction();
-//                    }
-//
-//                    SharedPreferences.Editor editor = preferences.edit();
-//                    editor.putBoolean(Constants.MOVED_IMAGE_DB, true);
-//                    editor.apply();
-//                }
-//            });
-//        }
 //    }
 
     private void initFirebaseInstance() {
@@ -249,18 +220,12 @@ public class MainActivity extends BaseActivity
     }
 
     private void shareApp() {
-/*        Bundle param = new Bundle();
-        param.putString("share","action share");
-        mFirebaseAnalytics.logEvent("action share f",param);*/
 
         Intent i = new Intent(Intent.ACTION_SEND);
         String playStoreLink = "https://play.google.com/store/apps/details?id=" +
                 getPackageName();
         String shareText = "I found wonderful photo collections from this app  " + playStoreLink;
-//        if(languageIndex == Utils.LanguageType.VI.getIndex()) {
-//            shareText = "App đọc truyện tranh quá hay, quá mượt, quá nhanh !!! " + playStoreLink;
-//        } else {
-//        }
+
         // Log Event
         logAnalytic(FirebaseAnalytics.Event.SHARE, null, null, null);
 

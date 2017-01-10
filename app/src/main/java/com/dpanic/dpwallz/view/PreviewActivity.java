@@ -287,10 +287,10 @@ public class PreviewActivity extends BaseActivity {
 
         Glide.clear(preImage);
 
-//        if (mDataManager != null) {
-//            mDataManager.destruct();
-//            mDataManager = null;
-//        }
+        if (mDataManager != null) {
+            mDataManager.destruct();
+            mDataManager = null;
+        }
 
         super.onDestroy();
     }

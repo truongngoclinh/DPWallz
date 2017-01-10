@@ -2,6 +2,7 @@ package com.dpanic.dpwallz.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -67,6 +68,8 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
     private static final int batchSize = 20;
     private boolean isFavorite;
     private DataManager mDataManager;
+    private int orientation = Configuration.ORIENTATION_PORTRAIT;
+    private GridLayoutManager layoutManager;
 
     public static FavoriteFragment getInstance(boolean isFavorite) {
         FavoriteFragment favoriteFragment = new FavoriteFragment();
@@ -109,7 +112,13 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
         favList = new ArrayList<>();
         displayList = new ArrayList<>();
         iaFavorite = new ImageAdapter(getActivity(), displayList);
-        final GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        orientation = getActivity().getResources().getConfiguration().orientation;
+
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager = new GridLayoutManager(getActivity(), 2);
+        } else {
+            layoutManager = new GridLayoutManager(getActivity(), 4);
+        }
         rvFavorite.setAdapter(iaFavorite);
         rvFavorite.setLayoutManager(layoutManager);
 
@@ -137,6 +146,18 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
 
 
         initData();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        orientation = newConfig.orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager.setSpanCount(2);
+        } else {
+            layoutManager.setSpanCount(4);
+        }
     }
 
     private void onLoadMore() {

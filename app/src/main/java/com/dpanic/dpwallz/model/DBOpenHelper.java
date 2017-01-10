@@ -14,7 +14,7 @@ class DBOpenHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "dpwallz.db";
     private static DBOpenHelper dbHelper;
 
-    public static synchronized DBOpenHelper getInstance(Context context) {
+    public static DBOpenHelper getInstance(Context context) {
         if (dbHelper == null) {
             dbHelper = new DBOpenHelper(context.getApplicationContext());
         }

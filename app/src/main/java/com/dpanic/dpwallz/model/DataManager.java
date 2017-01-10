@@ -21,12 +21,16 @@ import rx.subscriptions.CompositeSubscription;
 
 public class DataManager {
     private static DataManager mDataManager;
-    private final BriteDatabase database;
-    private final CompositeSubscription compositeSubscription = new CompositeSubscription();
+    private BriteDatabase database;
+    private static CompositeSubscription compositeSubscription;
 
     public static DataManager getInstance(Context context) {
         if (mDataManager == null) {
             mDataManager = new DataManager(context);
+        }
+
+        if (compositeSubscription == null) {
+            compositeSubscription = new CompositeSubscription();
         }
 
         return mDataManager;
@@ -135,14 +139,6 @@ public class DataManager {
                 + " WHERE "
                 + Image.FIELD_PEXELS_ID
                 + " = ? ";
-
-//        return database.createQuery(Image.TABLE_NAME, query, image.getPexelId())
-//                .flatMap(new Func1<SqlBrite.Query, Observable<Cursor>>() {
-//                    @Override
-//                    public Observable<Cursor> call(SqlBrite.Query query) {
-//                        return Observable.just(query.run());
-//                    }
-//                }).map(Image.MAPPER);
 
         return Observable.create(new Observable.OnSubscribe<Image>() {
             @Override
@@ -257,13 +253,6 @@ public class DataManager {
 
     public void forceToAddImage(final Image image) {
         Log.e("thanh.dao", "forceToAddImage: ");
-//        final Subscription[] sub = new Subscription[1];
-//        String quey = "INSERT OR REPLACE INTO " +Image.TABLE_NAME + " ("+Image.FIELD_PEXELS_ID, name, role) \n" +
-//                "  VALUES (  1, \n" +
-//                "            'Susan Bar',\n" +
-//                "            COALESCE((SELECT role FROM Employee WHERE id = 1), 'Benchwarmer')\n" +
-//                "          );";
-//        Log.d("thanh.dao", "forceToAddImage: ");
         compositeSubscription.add(deleteImage(image).subscribe(new Action1<Integer>() {
             @Override
             public void call(Integer integer) {
@@ -290,8 +279,9 @@ public class DataManager {
     }
 
     public void destruct() {
-//        if (compositeSubscription != null) {
-//            compositeSubscription.unsubscribe();
-//        }
+        if (compositeSubscription != null) {
+            compositeSubscription.unsubscribe();
+            compositeSubscription = null;
+        }
     }
 }

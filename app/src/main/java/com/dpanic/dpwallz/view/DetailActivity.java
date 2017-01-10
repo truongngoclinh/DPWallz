@@ -339,23 +339,6 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void loadData() {
-        //        mDataManager.isFavoriteImage(image).subscribe(new Action1<Boolean>() {
-        //            @Override
-        //            public void call(Boolean isFav) {
-        //                isFavorite = isFav;
-        //
-        //                image.setFavorite(isFavorite);
-        //                if (isFavorite) {
-        //                    btnFavOn.setVisibility(View.VISIBLE);
-        //                    btnFavOff.setVisibility(View.GONE);
-        //                } else {
-        //                    btnFavOn.setVisibility(View.GONE);
-        //                    btnFavOff.setVisibility(View.VISIBLE);
-        //                }
-        //            }
-        //        });
-
-
         compositeSubscription.add(mDataManager.getImage(image).subscribe(new Action1<Image>() {
             @Override
             public void call(Image img) {
@@ -520,28 +503,48 @@ public class DetailActivity extends BaseActivity {
         if (mContext != null) {
             mContext = null;
         }
-//        if (mDataManager != null) {
-//            mDataManager.destruct();
-//            mDataManager = null;
-//        }
+        if (mDataManager != null) {
+            mDataManager.destruct();
+            mDataManager = null;
+        }
 
         super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-        if (!isFavorite && image.isFavorite()) {
-            mDataManager.forceToAddImage(image);
-        } else if (isFavorite && !image.isFavorite()) {
-            if (image.getLocalLink().equals("")) {
-                compositeSubscription.add(mDataManager.deleteImage(image).subscribe
-                (new Action1<Integer>() {
-                    @Override
-                    public void call(Integer integer) {
-                        Log.e("thanh.dao", "onBackPress: deleted " + integer + " item");
-                    }
-                }));
-            } else {
+//        if (!isFavorite && image.isFavorite()) {
+//            mDataManager.forceToAddImage(image);
+//        } else if (isFavorite && !image.isFavorite()) {
+//            if (image.getLocalLink().equals("")) {
+//                compositeSubscription.add(mDataManager.deleteImage(image).subscribe
+//                (new Action1<Integer>() {
+//                    @Override
+//                    public void call(Integer integer) {
+//                        Log.e("thanh.dao", "onBackPress: deleted " + integer + " item");
+//                    }
+//                }));
+//            } else {
+//                mDataManager.forceToAddImage(image);
+//            }
+//        }
+
+        if (isFavorite) {
+            if (!image.isFavorite()) {
+                if (image.getLocalLink().equals("")) {
+                    compositeSubscription.add(mDataManager.deleteImage(image).subscribe
+                            (new Action1<Integer>() {
+                                @Override
+                                public void call(Integer integer) {
+                                    Log.e("thanh.dao", "onBackPress: deleted " + integer + " item");
+                                }
+                            }));
+                } else {
+                    mDataManager.forceToAddImage(image);
+                }
+            }
+        } else {
+            if (image.isFavorite()) {
                 mDataManager.forceToAddImage(image);
             }
         }
