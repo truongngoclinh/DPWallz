@@ -1,10 +1,11 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import com.dpanic.dpwallz.R;
+import com.dpanic.dpwallz.ui.category.CategoryFragment;
 import com.dpanic.dpwallz.util.Constants;
 
 /**

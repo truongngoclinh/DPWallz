@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import java.util.ArrayList;
 import android.content.Context;

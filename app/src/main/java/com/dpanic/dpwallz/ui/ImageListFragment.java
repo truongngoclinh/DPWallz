@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import java.util.ArrayList;
 import org.greenrobot.eventbus.EventBus;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.dpanic.dpwallz.R;
+import com.dpanic.dpwallz.ui.base.BaseFragment;
 import com.dpanic.dpwallz.busevent.NoResultFoundEvent;
 import com.dpanic.dpwallz.control.HTMLParsingUtil;
 import com.dpanic.dpwallz.model.Image;
@@ -116,7 +117,7 @@ public class ImageListFragment extends BaseFragment implements SwipeRefreshLayou
     }
 
     private void loadDataFromPage(int page) {
-        compositeSubscription.add(HTMLParsingUtil.getImageListStartAt(mainLink, page).subscribe(new
+        addSubscription(HTMLParsingUtil.getImageListStartAt(mainLink, page).subscribe(new
                                                                                                     Observer<ArrayList<Image>>() {
             @Override
             public void onCompleted() {

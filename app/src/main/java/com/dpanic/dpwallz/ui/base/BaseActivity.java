@@ -1,10 +1,7 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import com.dpanic.dpwallz.DPWallz;
-import com.dpanic.dpwallz.di.DPWallzComponent;
+import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -17,15 +14,21 @@ public class BaseActivity extends AppCompatActivity {
     CompositeSubscription compositeSubscription = new CompositeSubscription();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     protected void onDestroy() {
         if (compositeSubscription != null) {
-            compositeSubscription.unsubscribe();
+            compositeSubscription.clear();
         }
         super.onDestroy();
+    }
+
+    protected void addSubscription(Subscription subscription) {
+        if (subscription == null) {
+            return;
+        }
+
+        if (compositeSubscription == null) {
+            compositeSubscription = new CompositeSubscription();
+        }
+        compositeSubscription.add(subscription);
     }
 }

@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'realm-android'
-//apply plugin: 'android-apt'
 
 repositories {
     flatDir {
@@ -23,8 +21,8 @@ android {
         applicationId "com.dpanic.dpwallz"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 8
-        versionName "1.0.7"
+        versionCode 9
+        versionName "1.0.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -89,6 +87,8 @@ dependencies {
 
     compile "com.google.dagger:dagger:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    compile "me.henrytao:smooth-app-bar-layout:25.1.0.0"
 }
 
 apply plugin: 'com.google.gms.google-services'

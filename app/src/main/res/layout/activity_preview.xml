@@ -4,7 +4,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.dpanic.dpwallz.view.PreviewActivity"
+             tools:context="com.dpanic.dpwallz.ui.PreviewActivity"
              android:fitsSystemWindows="true"
              android:background="@color/color_fragment_background"
              xmlns:app="http://schemas.android.com/apk/res-auto">

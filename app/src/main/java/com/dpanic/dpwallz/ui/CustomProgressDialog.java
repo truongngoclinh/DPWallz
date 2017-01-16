@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

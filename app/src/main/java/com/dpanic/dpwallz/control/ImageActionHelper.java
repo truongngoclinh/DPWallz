@@ -17,7 +17,7 @@ import com.dpanic.dpwallz.R;
 import com.dpanic.dpwallz.busevent.DownloadEvent;
 import com.dpanic.dpwallz.model.Image;
 import com.dpanic.dpwallz.util.Constants;
-import com.dpanic.dpwallz.view.CustomProgressDialog;
+import com.dpanic.dpwallz.ui.CustomProgressDialog;
 import rx.Observer;
 import rx.subscriptions.CompositeSubscription;
 

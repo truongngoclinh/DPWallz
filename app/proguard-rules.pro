@@ -16,6 +16,9 @@
 #   public *;
 #}
 
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+
 -keep class * implements com.bumptech.glide.module.GlideModule
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 

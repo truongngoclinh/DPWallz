@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import com.dpanic.dpwallz.R;
+import com.dpanic.dpwallz.ui.base.BaseFragment;
 import com.dpanic.dpwallz.control.FileUtil;
 import com.dpanic.dpwallz.model.DataManager;
 import com.dpanic.dpwallz.model.Image;
@@ -189,7 +190,7 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
 
     private void initData() {
         if (isFavorite) {
-            compositeSubscription.add(mDataManager.getFavoriteImageList().subscribeOn(Schedulers.io())
+            addSubscription(mDataManager.getFavoriteImageList().subscribeOn(Schedulers.io())
                                               .observeOn(AndroidSchedulers.mainThread())
                                               .subscribe(new Action1<List<Image>>() {
                                                   @Override
@@ -206,7 +207,7 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
                                                   }
                                               }));
         } else {
-            compositeSubscription.add(mDataManager.getHistoryImageList().subscribeOn(Schedulers.io())
+            addSubscription(mDataManager.getHistoryImageList().subscribeOn(Schedulers.io())
                                               .observeOn(AndroidSchedulers.mainThread())
                                               .subscribe(new Action1<List<Image>>() {
                                                   @Override
@@ -236,7 +237,7 @@ public class FavoriteFragment extends BaseFragment implements SwipeRefreshLayout
                 if (FileUtil.isFileExists(image.getLocalLink())) {
                     favList.add(image);
                 } else {
-                    compositeSubscription.add(mDataManager.deleteImage(image).subscribeOn(Schedulers.io())
+                    addSubscription(mDataManager.deleteImage(image).subscribeOn(Schedulers.io())
                                                       .observeOn(AndroidSchedulers.mainThread())
                                                       .subscribe(new Action1<Integer>() {
                                                           @Override

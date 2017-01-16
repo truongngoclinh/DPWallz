@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_fragment_background"
     android:orientation="vertical"
-    tools:context="com.dpanic.dpwallz.view.SearchActivity">
+    tools:context="com.dpanic.dpwallz.ui.SearchActivity">
 
     <FrameLayout
         android:id="@+id/search_toolbar_container"

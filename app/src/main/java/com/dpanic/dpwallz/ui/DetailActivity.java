@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -32,6 +32,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.dpanic.dpwallz.R;
+import com.dpanic.dpwallz.ui.base.BaseActivity;
 import com.dpanic.dpwallz.busevent.DownloadEvent;
 import com.dpanic.dpwallz.busevent.OpenCategoryEvent;
 import com.dpanic.dpwallz.control.DownloadUtil;
@@ -339,7 +340,7 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void loadData() {
-        compositeSubscription.add(mDataManager.getImage(image).subscribe(new Action1<Image>() {
+        addSubscription(mDataManager.getImage(image).subscribe(new Action1<Image>() {
             @Override
             public void call(Image img) {
                 if (image != null) {
@@ -374,7 +375,7 @@ public class DetailActivity extends BaseActivity {
         //        }
 
         Log.e("thanh.dao", "loadData: detail link = " + image.getDetailLink());
-        compositeSubscription.add(HTMLParsingUtil.getImageDetailFromUrl(image.getDetailLink())
+        addSubscription(HTMLParsingUtil.getImageDetailFromUrl(image.getDetailLink())
                 .subscribe(new Observer<ImageDetail>() {
                     @Override
                     public void onCompleted() {
@@ -532,7 +533,7 @@ public class DetailActivity extends BaseActivity {
         if (isFavorite) {
             if (!image.isFavorite()) {
                 if (image.getLocalLink().equals("")) {
-                    compositeSubscription.add(mDataManager.deleteImage(image).subscribe
+                    addSubscription(mDataManager.deleteImage(image).subscribe
                             (new Action1<Integer>() {
                                 @Override
                                 public void call(Integer integer) {

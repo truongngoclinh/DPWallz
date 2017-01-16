@@ -1,7 +1,6 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import java.util.ArrayList;
-import javax.inject.Inject;
 import org.greenrobot.eventbus.EventBus;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -24,7 +23,6 @@ import com.dpanic.dpwallz.busevent.OpenImageEvent;
 import com.dpanic.dpwallz.model.Image;
 import com.dpanic.dpwallz.util.Constants;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import butterknife.BindView;
@@ -61,7 +59,6 @@ class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         adView = new NativeExpressAdView(mContext.getApplicationContext());
         String native_ads_id = mContext.getResources().getString(R.string.string_image_list_native_ad_id);
         adView.setAdUnitId(native_ads_id);
-        adView.setAdSize(new AdSize(360, 100));
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                                                              ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, (int) context.getResources().getDimension(R.dimen.ad_vertical_margin), 0,
@@ -189,39 +186,41 @@ class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EventBus.getDefault().post(new OpenImageEvent(imageList.get(getAdapterPosition())));
-                    FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(mContext);
-                    Bundle bundle = new Bundle();
-                    bundle.putString(FirebaseAnalytics.Param.VALUE, "1");
-                    String action = Constants.RECENT_IMAGE;
-                    switch (fragmentType) {
-                    case Constants.FRAG_TYPE_RECENT:
-                        action = Constants.RECENT_IMAGE;
-                        break;
-                    case Constants.FRAG_TYPE_MONTH_POPULAR:
-                        action = Constants.MONTH_POPULAR_IMAGE;
-                        break;
-                    case Constants.FRAG_TYPE_ALL_TIME_POPULAR:
-                        action = Constants.ALL_TIME_POPULAR_IMAGE;
-                        break;
-                    case Constants.FRAG_TYPE_SEARCH:
-                        action = Constants.SEARCH_IMAGE;
-                        break;
+                    if (getAdapterPosition() >= 0 && getAdapterPosition() < getItemCount()) {
+                        EventBus.getDefault().post(new OpenImageEvent(imageList.get(getAdapterPosition())));
+                        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(mContext);
+                        Bundle bundle = new Bundle();
+                        bundle.putString(FirebaseAnalytics.Param.VALUE, "1");
+                        String action = Constants.RECENT_IMAGE;
+                        switch (fragmentType) {
+                        case Constants.FRAG_TYPE_RECENT:
+                            action = Constants.RECENT_IMAGE;
+                            break;
+                        case Constants.FRAG_TYPE_MONTH_POPULAR:
+                            action = Constants.MONTH_POPULAR_IMAGE;
+                            break;
+                        case Constants.FRAG_TYPE_ALL_TIME_POPULAR:
+                            action = Constants.ALL_TIME_POPULAR_IMAGE;
+                            break;
+                        case Constants.FRAG_TYPE_SEARCH:
+                            action = Constants.SEARCH_IMAGE;
+                            break;
+                        }
+
+                        analytics.logEvent(action, bundle);
+
+
+                        //                    Intent intent = new Intent(mContext, DetailActivity.class);
+                        //
+                        //                    Bundle detailBundle = new Bundle();
+                        //                    detailBundle.putParcelable(Constants.IMAGE_INSTANCE, imageList.get(getAdapterPosition()));
+                        //
+                        //                    intent.putExtras(detailBundle);
+                        //                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                        //                            makeSceneTransitionAnimation(((Activity) mContext), v, "open_detail");
+                        //
+                        //                    mContext.startActivity(intent, options.toBundle());
                     }
-
-                    analytics.logEvent(action, bundle);
-
-
-//                    Intent intent = new Intent(mContext, DetailActivity.class);
-//
-//                    Bundle detailBundle = new Bundle();
-//                    detailBundle.putParcelable(Constants.IMAGE_INSTANCE, imageList.get(getAdapterPosition()));
-//
-//                    intent.putExtras(detailBundle);
-//                    ActivityOptionsCompat options = ActivityOptionsCompat.
-//                            makeSceneTransitionAnimation(((Activity) mContext), v, "open_detail");
-//
-//                    mContext.startActivity(intent, options.toBundle());
                 }
             });
         }

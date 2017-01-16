@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.view;
+package com.dpanic.dpwallz.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.dpanic.dpwallz.R;
+import com.dpanic.dpwallz.ui.base.BaseFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

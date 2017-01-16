@@ -24,7 +24,7 @@
             android:value="GlideModule"/>
 
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
@@ -36,12 +36,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.DetailActivity"
+            android:name=".ui.DetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name=".view.PreviewActivity"
+            android:name=".ui.PreviewActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@style/AppTheme">
 
@@ -49,7 +49,7 @@
             <!-- <meta-data android:value="GlideModule" tools:node="remove" android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule" /> -->
         </activity>
         <activity
-            android:name=".view.SearchActivity"
+            android:name=".ui.SearchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             >
         </activity>
