@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

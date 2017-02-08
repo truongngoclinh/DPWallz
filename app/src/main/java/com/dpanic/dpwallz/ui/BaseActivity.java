@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.ui.base;
+package com.dpanic.dpwallz.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import rx.Subscription;

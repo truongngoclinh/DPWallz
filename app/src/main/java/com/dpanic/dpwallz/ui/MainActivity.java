@@ -24,7 +24,6 @@ import android.view.View;
 import android.widget.Toast;
 import com.dpanic.dpwallz.BuildConfig;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseActivity;
 import com.dpanic.dpwallz.busevent.OpenCategoryEvent;
 import com.dpanic.dpwallz.busevent.OpenImageEvent;
 import com.dpanic.dpwallz.control.AppRate;

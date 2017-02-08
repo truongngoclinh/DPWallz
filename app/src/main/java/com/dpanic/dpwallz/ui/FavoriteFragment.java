@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseFragment;
 import com.dpanic.dpwallz.control.FileUtil;
 import com.dpanic.dpwallz.model.DataManager;
 import com.dpanic.dpwallz.model.Image;

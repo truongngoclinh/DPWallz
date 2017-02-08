@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.ui.category;
+package com.dpanic.dpwallz.ui;
 
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseFragment;
 import com.dpanic.dpwallz.control.HTMLParsingUtil;
 import com.dpanic.dpwallz.model.Category;
 import com.dpanic.dpwallz.model.DataManager;

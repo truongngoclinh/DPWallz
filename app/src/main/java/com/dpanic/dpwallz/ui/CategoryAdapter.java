@@ -1,4 +1,4 @@
-package com.dpanic.dpwallz.ui.category;
+package com.dpanic.dpwallz.ui;
 
 import java.util.ArrayList;
 

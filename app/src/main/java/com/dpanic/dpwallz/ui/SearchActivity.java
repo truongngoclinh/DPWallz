@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseActivity;
 import com.dpanic.dpwallz.busevent.NoResultFoundEvent;
 import com.dpanic.dpwallz.busevent.OpenImageEvent;
 import com.dpanic.dpwallz.control.TextUtil;

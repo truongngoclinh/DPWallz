@@ -32,7 +32,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.dpanic.dpwallz.R;
-import com.dpanic.dpwallz.ui.base.BaseActivity;
 import com.dpanic.dpwallz.busevent.DownloadEvent;
 import com.dpanic.dpwallz.busevent.OpenCategoryEvent;
 import com.dpanic.dpwallz.control.DownloadUtil;
