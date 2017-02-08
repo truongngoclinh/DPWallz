@@ -1,2 +1,6 @@
 /build
 *.apk
+*.jks
+*.json
+*.7z
+*.rar
